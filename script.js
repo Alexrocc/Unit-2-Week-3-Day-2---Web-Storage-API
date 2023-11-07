@@ -10,17 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
   };
   preLoadInput(nameInput);
 
-  const timeSpent = () => {
-    let timerValue = sessionStorage.getItem("timer")
-      ? parseInt(sessionStorage.getItem("timer"))
-      : 0;
-    document.getElementsByTagName("h3")[0].innerText = timerValue;
-    setInterval(function () {
-      timerValue += 1;
-      sessionStorage.setItem("timer", timerValue);
-      document.getElementsByTagName("h3")[0].innerText = timerValue;
-    }, 1000);
-  };
   timeSpent();
 });
 
@@ -38,4 +27,16 @@ const preLoadInput = (inputNode) => {
   if (storedName && inputNode) {
     inputNode.value = storedName;
   }
+};
+
+const timeSpent = () => {
+  let timerValue = sessionStorage.getItem("timer")
+    ? parseInt(sessionStorage.getItem("timer"))
+    : 0;
+  document.getElementsByTagName("h3")[0].innerText = timerValue;
+  setInterval(function () {
+    timerValue += 1;
+    sessionStorage.setItem("timer", timerValue);
+    document.getElementsByTagName("h3")[0].innerText = timerValue;
+  }, 1000);
 };
