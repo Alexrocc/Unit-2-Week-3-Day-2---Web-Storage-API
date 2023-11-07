@@ -15,10 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const saveInput = () => {
   if (document.getElementById("nameInput").value) {
-    localStorage.setItem(
-      "username",
-      document.getElementById("nameInput").value
-    );
+    localStorage.setItem("username", document.getElementById("nameInput").value);
   }
 };
 
@@ -30,9 +27,7 @@ const preLoadInput = (inputNode) => {
 };
 
 const timeSpent = () => {
-  let timerValue = sessionStorage.getItem("timer")
-    ? parseInt(sessionStorage.getItem("timer"))
-    : 0;
+  let timerValue = sessionStorage.getItem("timer") ? parseInt(sessionStorage.getItem("timer")) : 0;
   document.getElementsByTagName("h3")[0].innerText = timerValue;
   setInterval(function () {
     timerValue += 1;
