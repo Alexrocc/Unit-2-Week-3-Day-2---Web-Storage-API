@@ -9,9 +9,19 @@ window.addEventListener("DOMContentLoaded", () => {
     nameInput.value = "";
   };
   preLoadInput(nameInput);
+
+  const timeSpent = () => {
+    let timerValue = sessionStorage.getItem("timer")
+      ? parseInt(sessionStorage.getItem("timer"))
+      : 0;
+    document.getElementsByTagName("h3")[0].innerText = timerValue;
+    setInterval(function () {
+      timerValue += 1;
+      sessionStorage.setItem("timer", timerValue);
+      document.getElementsByTagName("h3")[0].innerText = timerValue;
+    }, 1000);
+  };
   timeSpent();
-  let counter = sessionStorage.getItem("timer");
-  console.log(counter);
 });
 
 const saveInput = () => {
@@ -28,15 +38,4 @@ const preLoadInput = (inputNode) => {
   if (storedName && inputNode) {
     inputNode.value = storedName;
   }
-};
-
-const timeSpent = () => {
-  sessionStorage.setItem("timer", 0);
-  let timerValue = parseInt(sessionStorage.getItem("timer"));
-  document.getElementsByTagName("h3")[0].innerText = timerValue;
-  setInterval(function () {
-    timerValue += 1;
-    sessionStorage.setItem("timer", timerValue);
-    document.getElementsByTagName("h3")[0].innerText = timerValue;
-  }, 1000);
 };
